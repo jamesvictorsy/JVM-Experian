@@ -1,0 +1,11 @@
+BEGIN TRY TRUNCATE TABLE dbo.DimSpecies END TRY BEGIN CATCH END CATCH
+INSERT INTO dbo.DimSpecies
+(
+	 SpeciesName
+)
+SELECT DISTINCT
+	 Species 
+FROM dbo.STAGING_Coffee
+ORDER BY
+	 Species
+GO

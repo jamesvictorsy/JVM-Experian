@@ -1,0 +1,12 @@
+BEGIN TRY TRUNCATE TABLE dbo.DimLocation END TRY BEGIN CATCH END CATCH
+INSERT INTO dbo.DimLocation
+(
+	Country
+)
+SELECT DISTINCT
+	CountryOfOrigin
+FROM dbo.STAGING_Coffee
+WHERE CountryOfOrigin IS NOT NULL
+ORDER BY
+	CountryOfOrigin
+GO
